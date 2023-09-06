@@ -1,0 +1,20 @@
+<!-- <p>json-display works!</p> -->
+<table>
+    <!-- <tr>
+        <th>Key</th>
+        <th>Value</th>
+    </tr> -->
+    <ng-container *ngFor="let item of jsonData | keyvalue">
+        <tr>
+            <td>{{item.key}}</td>
+            <td>
+                <ng-container *ngIf="item.value | isObject; else simpleValue">
+                    <app-json-display [jsonData]="item.value"></app-json-display>
+                </ng-container>
+                <ng-template #simpleValue>
+                    {{item.value}}
+                </ng-template>
+            </td>
+        </tr>
+    </ng-container>
+</table>
