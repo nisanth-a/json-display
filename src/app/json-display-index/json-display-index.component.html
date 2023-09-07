@@ -1,0 +1,15 @@
+<table>
+    <ng-container *ngFor="let item of getObjectKeys(jsonDataIndex)">
+        <tr>
+            <td>{{formatKey(item)}}</td>
+            <td>
+                <ng-container *ngIf="isObject(jsonDataIndex[item]); else simpleValue">
+                    <app-json-display-index [jsonDataIndex]="jsonDataIndex[item]"></app-json-display-index>
+                </ng-container>
+                <ng-template #simpleValue>
+                    {{jsonDataIndex[item]}}
+                </ng-template>
+            </td>
+        </tr>
+    </ng-container>
+</table>
